@@ -1,6 +1,7 @@
 package com.github.DominasPL.CarRental.web.controllers;
 
 import com.github.DominasPL.CarRental.dtos.RegistrationDTO;
+import com.github.DominasPL.CarRental.dtos.UserDTO;
 import com.github.DominasPL.CarRental.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,10 +39,46 @@ public class RegistrationController {
             return "registration";
         }
 
+        if (!checkPasswordEquality(form)) {
+            result.rejectValue("password", null, "Passwords are not equals!");
+            return "registration";
+        }
+
+        if (!checkIsUsernameAvailable(form)) {
+            result.rejectValue("username", null, "Username is already in database!");
+            return "registration";
+        }
+
+
         userService.registerUser(form);
 
         return "redirect:/";
 
     }
+
+    public boolean checkIsUsernameAvailable(RegistrationDTO form) {
+
+        UserDTO userDTO = userService.findUserByUsername(form.getUsername());
+
+        if (userDTO == null) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public boolean checkPasswordEquality(RegistrationDTO form) {
+
+        if (form.getPassword().equals(form.getConfirmedPassword())) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+
+
 
 }

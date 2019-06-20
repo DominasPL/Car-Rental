@@ -16,16 +16,16 @@
 
     <h1>Registration</h1>
     <form:form modelAttribute="form" method="post">
-        <form:errors path="*"/>
+        <form:errors path="*"/> <br>
 
         Username
         <form:input path="username"/> <br>
 
         Password
-        <form:input path="password"/> <br>
+        <form:password path="password"/> <br>
 
         Confirm password
-        <form:input path="confirmedPassword"/> <br>
+        <form:password path="confirmedPassword"/> <br>
 
         <input type="submit" value="Submit">
     </form:form>
