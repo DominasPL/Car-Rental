@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: dominik
@@ -13,7 +14,21 @@
 </head>
 <body>
 
-    <h1>Rejestracja</h1>
+    <h1>Registration</h1>
+    <form:form modelAttribute="form" method="post">
+        <form:errors path="*"/>
+
+        Username
+        <form:input path="username"/> <br>
+
+        Password
+        <form:input path="password"/> <br>
+
+        Confirm password
+        <form:input path="confirmedPassword"/> <br>
+
+        <input type="submit" value="Submit">
+    </form:form>
 
 </body>
 </html>
