@@ -28,7 +28,7 @@ public class RegistrationController {
 
         model.addAttribute("form", new RegistrationDTO());
 
-        return "registration";
+        return "registration-form";
 
     }
 
@@ -36,17 +36,17 @@ public class RegistrationController {
     public String registerUser(@Valid @ModelAttribute("form") RegistrationDTO form, BindingResult result) {
 
         if (result.hasErrors()) {
-            return "registration";
+            return "registration-form";
         }
 
         if (!checkPasswordEquality(form)) {
             result.rejectValue("password", null, "Passwords are not equals!");
-            return "registration";
+            return "registration-form";
         }
 
         if (!checkIsUsernameAvailable(form)) {
             result.rejectValue("username", null, "Username is already in database!");
-            return "registration";
+            return "registration-form";
         }
 
 
