@@ -31,8 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
-                .usersByUsernameQuery("SELECT email, password, true FROM users WHERE email = ?")
-                .authoritiesByUsernameQuery("SELECT username, ROLE_USER FROM users WHERE username = ?");
+                .usersByUsernameQuery("SELECT username, password, true FROM users WHERE username = ?") // pobieranie pól z bazy danych które wykorzystywane są w procesie logowania
+                .authoritiesByUsernameQuery("SELECT username, 'ROLE_USER' FROM users WHERE username = ?"); // Rola uzytkownika
 //                .authoritiesByUsernameQuery("SELECT email, role FROM users\n" +
 //                        "INNER JOIN users_roles ON users.id = users_roles.user_id\n" +
 //                        "INNER JOIN roles ON users_roles.role_id = roles.id\n" +
