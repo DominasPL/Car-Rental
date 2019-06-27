@@ -20,6 +20,7 @@
     <a class="btn btn-primary" href="/" role="button">Main page</a>
     <a class="btn btn-primary" href="/login" role="button">Login</a>
     <a class="btn btn-primary" href="/register" role="button">Registration</a>
+    <a class="btn btn-primary" href="/edit" role="button">Edit</a>
     <a class="btn btn-primary" href="/logout" role="button">Logout</a>
 
     <h1>Registration</h1>

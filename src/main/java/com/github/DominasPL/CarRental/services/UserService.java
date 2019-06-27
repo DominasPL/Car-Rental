@@ -3,9 +3,12 @@ package com.github.DominasPL.CarRental.services;
 import com.github.DominasPL.CarRental.converters.Converter;
 import com.github.DominasPL.CarRental.domain.entities.User;
 import com.github.DominasPL.CarRental.domain.entities.UserDetails;
+import com.github.DominasPL.CarRental.domain.repositories.UserDetailsRepository;
 import com.github.DominasPL.CarRental.domain.repositories.UserRepository;
+import com.github.DominasPL.CarRental.dtos.EditDetailsDTO;
 import com.github.DominasPL.CarRental.dtos.RegistrationDTO;
 import com.github.DominasPL.CarRental.dtos.UserDTO;
+import com.github.DominasPL.CarRental.dtos.UserDetailsDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,10 +24,12 @@ public class UserService {
 
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
+    private UserDetailsRepository userDetailsRepository;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserDetailsRepository userDetailsRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.userDetailsRepository = userDetailsRepository;
     }
 
     @Transactional
@@ -39,10 +44,33 @@ public class UserService {
 
     }
 
+    @Transactional
+    public void editUserDetails(EditDetailsDTO form, String username) {
+
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+        User user = optionalUser.orElse(null);
+
+        if (user == null) {
+            logger.info("User not found!");
+
+        } else {
+
+            UserDetails userDetails = user.getUserDetails();
+            userDetails.setEmail(form.getEmail());
+            userDetails.setFirstName(form.getFirstName());
+            userDetails.setLastName(form.getLastName());
+            userDetails.setAddress(form.getAddress());
+            userDetails.setPhoneNumber(form.getPhoneNumber());
+            userDetails.setPostalCode(form.getPostalCode());
+        }
+
+
+    }
+
     public UserDTO findUserByUsername(String username) {
 
         if (username == null) {
-            throw new IllegalArgumentException("Email has to be given!");
+            throw new IllegalArgumentException("Username has to be given!");
         }
 
         Optional<User> optionalUser = userRepository.findByUsername(username);
@@ -58,4 +86,45 @@ public class UserService {
         return userDTO;
 
     }
+
+    public EditDetailsDTO findUserDetails(String username) {
+
+        if (username == null) {
+            throw new IllegalArgumentException("Username has to be given!");
+        }
+
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+        User user = optionalUser.orElse(null);
+
+        if (user == null) {
+            logger.info("User not found!");
+            return null;
+        }
+
+        EditDetailsDTO editDetailsDTO = Converter.convertToEditUserDTO(user);
+
+        return editDetailsDTO;
+
+    }
+
+    public UserDetailsDTO checkIsEmailInDatabase(String email) {
+
+        if (email == null) {
+            throw new IllegalArgumentException("Username has to be given!");
+        }
+
+        Optional<UserDetails> optionalUserDetails = userDetailsRepository.findByEmail(email);
+        UserDetails userDetails = optionalUserDetails.orElse(null);
+
+        if (userDetails == null) {
+            logger.info("UserDetails not found!");
+            return null;
+        }
+
+        UserDetailsDTO userDetailsDTO = Converter.convertToUserDetailsDTO(userDetails);
+
+        return userDetailsDTO;
+
+    }
+
 }
