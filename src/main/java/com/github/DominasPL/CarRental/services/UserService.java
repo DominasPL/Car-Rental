@@ -2,6 +2,7 @@ package com.github.DominasPL.CarRental.services;
 
 import com.github.DominasPL.CarRental.converters.Converter;
 import com.github.DominasPL.CarRental.domain.entities.User;
+import com.github.DominasPL.CarRental.domain.entities.UserDetails;
 import com.github.DominasPL.CarRental.domain.repositories.UserRepository;
 import com.github.DominasPL.CarRental.dtos.RegistrationDTO;
 import com.github.DominasPL.CarRental.dtos.UserDTO;
@@ -32,6 +33,9 @@ public class UserService {
         User user = Converter.convertToUser(form);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+        UserDetails userDetails = new UserDetails();
+        userDetails.setId(user.getId());
+        user.setUserDetails(userDetails);
 
     }
 
