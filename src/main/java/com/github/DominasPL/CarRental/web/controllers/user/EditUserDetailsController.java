@@ -1,4 +1,4 @@
-package com.github.DominasPL.CarRental.web.controllers;
+package com.github.DominasPL.CarRental.web.controllers.user;
 
 import com.github.DominasPL.CarRental.dtos.EditDetailsDTO;
 import com.github.DominasPL.CarRental.dtos.UserDetailsDTO;
