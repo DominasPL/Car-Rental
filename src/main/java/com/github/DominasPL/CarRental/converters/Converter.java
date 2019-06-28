@@ -8,6 +8,7 @@ import com.github.DominasPL.CarRental.dtos.RegistrationDTO;
 import com.github.DominasPL.CarRental.dtos.UserDTO;
 import com.github.DominasPL.CarRental.dtos.UserDetailsDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Converter {
@@ -76,4 +77,16 @@ public class Converter {
     }
 
 
+    public static List<UserDTO> convertToListUserDTO(List<User> allUsers) {
+
+        List<UserDTO> usersDTO = new ArrayList<>();
+        for (User user : allUsers) {
+            UserDTO userDTO = new UserDTO();
+            userDTO.setUsername(user.getUsername());
+            usersDTO.add(userDTO);
+        }
+
+        return usersDTO;
+
+    }
 }

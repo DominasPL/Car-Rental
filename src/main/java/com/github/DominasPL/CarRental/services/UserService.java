@@ -144,4 +144,18 @@ public class UserService {
 
     }
 
+    public List<UserDTO> loadAllUsers() {
+
+        List<User> allUsers = userRepository.findAll();
+
+        if (allUsers == null) {
+            logger.info("Nie znaleziono użytkowników!");
+            return null;
+        }
+
+        List<UserDTO> usersDTO = Converter.convertToListUserDTO(allUsers);
+
+        return usersDTO;
+
+    }
 }
