@@ -32,7 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery("SELECT username, password, true FROM users WHERE username = ?") // pobieranie pól z bazy danych które wykorzystywane są w procesie logowania
-                .authoritiesByUsernameQuery("SELECT username, 'ROLE_USER' FROM users WHERE username = ?"); // Rola uzytkownika
+                .authoritiesByUsernameQuery("SELECT username, role FROM users\n" +
+                        "JOIN users_roles ON users.id = users_roles.user_id\n" +
+                        "JOIN roles ON roles.id = users_roles.role_id\n" +
+                        "WHERE username = ?;");
 
     }
 
