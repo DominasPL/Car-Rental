@@ -37,13 +37,27 @@ public class UserService {
     @Transactional
     public void registerUser(RegistrationDTO form) {
 
-        User user = Converter.convertToUser(form);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-        UserDetails userDetails = new UserDetails();
-        userDetails.setId(user.getId());
-        user.setUserDetails(userDetails);
+        List<User> allUsers = userRepository.findAll();
 
+        if (allUsers.size() < 1) {
+            //AddAdmin
+            User user = Converter.convertToAdmin(form);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            userRepository.save(user);
+            UserDetails userDetails = new UserDetails();
+            userDetails.setId(user.getId());
+            user.setUserDetails(userDetails);
+
+        } else {
+            //AddUser
+            User user = Converter.convertToUser(form);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            userRepository.save(user);
+            UserDetails userDetails = new UserDetails();
+            userDetails.setId(user.getId());
+            user.setUserDetails(userDetails);
+
+        }
 
     }
 

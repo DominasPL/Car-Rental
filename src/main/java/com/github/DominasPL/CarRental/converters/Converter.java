@@ -1,5 +1,6 @@
 package com.github.DominasPL.CarRental.converters;
 
+import com.github.DominasPL.CarRental.domain.entities.Role;
 import com.github.DominasPL.CarRental.domain.entities.User;
 import com.github.DominasPL.CarRental.domain.entities.UserDetails;
 import com.github.DominasPL.CarRental.dtos.EditDetailsDTO;
@@ -7,16 +8,39 @@ import com.github.DominasPL.CarRental.dtos.RegistrationDTO;
 import com.github.DominasPL.CarRental.dtos.UserDTO;
 import com.github.DominasPL.CarRental.dtos.UserDetailsDTO;
 
+import java.util.List;
+
 public class Converter {
+
+    public static User convertToAdmin(RegistrationDTO form) {
+
+        User user = new User();
+        user.setUsername(form.getUsername());
+        user.setPassword(form.getPassword());
+        List<Role> roles = user.getRoles();
+        Role role = new Role();
+        role.setId(1L);
+        role.setRole("ROLE_ADMIN");
+        roles.add(role);
+
+        return user;
+
+    }
 
     public static User convertToUser(RegistrationDTO form) {
 
         User user = new User();
         user.setUsername(form.getUsername());
         user.setPassword(form.getPassword());
+        List<Role> roles = user.getRoles();
+        Role role = new Role();
+        role.setId(2L);
+        role.setRole("ROLE_USER");
+        roles.add(role);
 
         return user;
     }
+
 
     public static UserDTO convertToUserDTO(User user) {
 
@@ -48,4 +72,6 @@ public class Converter {
 
         return userDetailsDTO;
     }
+
+
 }
