@@ -46,6 +46,8 @@ public class Converter {
 
         UserDTO userDTO = new UserDTO();
         userDTO.setUsername(user.getUsername());
+        List<Role> roles = user.getRoles();
+        userDTO.setRole(roles.get(0).getRole());
 
         return userDTO;
     }
