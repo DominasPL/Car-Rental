@@ -1,6 +1,7 @@
 package com.github.DominasPL.CarRental.services;
 
 import com.github.DominasPL.CarRental.converters.Converter;
+import com.github.DominasPL.CarRental.domain.entities.Role;
 import com.github.DominasPL.CarRental.domain.entities.User;
 import com.github.DominasPL.CarRental.domain.entities.UserDetails;
 import com.github.DominasPL.CarRental.domain.repositories.UserDetailsRepository;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,6 +43,7 @@ public class UserService {
         UserDetails userDetails = new UserDetails();
         userDetails.setId(user.getId());
         user.setUserDetails(userDetails);
+
 
     }
 
