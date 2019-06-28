@@ -46,7 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //tak jak w bolku try catch od najbardziej szczegółowych do najmniej
                     .antMatchers("/register").anonymous() // dostep dla niezalogowanych
                     .antMatchers("/login").anonymous() // dostep dla niezalogowanych
-                    .antMatchers("/").permitAll() // dostep dla wszystkich
+                    .antMatchers("/").anonymous() // dostep dla niezalogowanych
+                    .antMatchers("/admin", "/admin/**").hasRole("ADMIN") // tylko dla adminow
+                    .antMatchers("/user", "/user/**").hasRole("USER") // tylko dla userow
 //                    .antMatchers("/media/**").permitAll()//dostep do folderu media dla wszystkich
                     .anyRequest().authenticated()
                     .and()

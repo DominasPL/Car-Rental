@@ -18,7 +18,7 @@
     <h1>This is an admin panel!</h1>
     <a class="btn btn-primary" href="/users" role="button">Users</a>
     <a class="btn btn-primary" href="/admins" role="button">Admins</a>
-    <a class="btn btn-primary" href="/" role="button">Return</a>
+    <a class="btn btn-primary" href="/logout" role="button">Logout</a>
 
 </body>
 </html>

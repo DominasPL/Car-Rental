@@ -1,3 +1,4 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: dominik
@@ -15,13 +16,20 @@
 </head>
 <body>
 
-    <a class="btn btn-primary" href="/" role="button">Main page</a>
-    <a class="btn btn-primary" href="/login" role="button">Login</a>
-    <a class="btn btn-primary" href="/register" role="button">Registration</a>
-    <a class="btn btn-primary" href="/edit" role="button">Edit</a>
-    <a class="btn btn-primary" href="/logout" role="button">Logout</a>
+<h1>Main Page</h1>
 
-    <h1>Main Page</h1>
+    <a class="btn btn-primary" href="/user" role="button">Main page</a>
+
+    <sec:authorize access="!isAuthenticated()">
+        <a class="btn btn-primary" href="/login" role="button">Login</a>
+        <a class="btn btn-primary" href="/register" role="button">Registration</a>
+    </sec:authorize>
+
+    <sec:authorize access="isAuthenticated()">
+        <a class="btn btn-primary" href="/edit" role="button">Edit</a>
+        <a class="btn btn-primary" href="/logout" role="button">Logout</a>
+    </sec:authorize>
+
 
 
 </body>

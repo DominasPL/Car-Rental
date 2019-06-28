@@ -52,7 +52,7 @@ public class RegistrationController {
 
         userService.registerUser(form);
 
-        return "redirect:/";
+        return "redirect:/user";
 
     }
 

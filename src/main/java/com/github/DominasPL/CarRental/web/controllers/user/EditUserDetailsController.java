@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
-@RequestMapping("/edit")
+@RequestMapping("/user/edit")
 public class EditUserDetailsController {
 
     private UserService userService;

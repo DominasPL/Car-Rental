@@ -27,7 +27,7 @@ public class CheckRoleController {
             return "redirect:/admin";
         }
 
-        return "redirect:/";
+        return "redirect:/user";
 
     }
 
