@@ -2,29 +2,28 @@
 <%--
   Created by IntelliJ IDEA.
   User: dominik
-  Date: 6/28/19
-  Time: 2:39 PM
+  Date: 6/29/19
+  Time: 8:12 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Users</title>
+    <title>Admins</title>
 </head>
 <body>
 
     <h1>All users</h1>
-    <c:forEach items="${users}" var="user" varStatus="userStatus">
+    <c:forEach items="${admins}" var="admin" varStatus="adminStatus">
         <tr>
-            <td>${userStatus.count}</td>
-            <td>${user.username}</td>
+            <td>${adminStatus.count}</td>
+            <td>${admin.username}</td>
             <td><a href="">Edycja</a></td>
             <td><a href="">Usuń</a></td>
         </tr>
         <br>
     </c:forEach>
-
 
 </body>
 </html>

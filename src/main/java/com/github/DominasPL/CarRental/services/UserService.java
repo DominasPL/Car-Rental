@@ -146,16 +146,31 @@ public class UserService {
 
     public List<UserDTO> loadAllUsers() {
 
-        List<User> allUsers = userRepository.findAll();
+        List<User> allUsers = userRepository.findUsers();
 
         if (allUsers == null) {
-            logger.info("Nie znaleziono użytkowników!");
+            logger.info("Users not found!");
             return null;
         }
 
         List<UserDTO> usersDTO = Converter.convertToListUserDTO(allUsers);
 
         return usersDTO;
+
+    }
+
+    public List<UserDTO> loadAllAdmins() {
+        List<User> allAdmins = userRepository.findAdmins();
+
+        if (allAdmins == null) {
+            logger.info("Admins not found!");
+            return null;
+        }
+
+        List<UserDTO> adminsDTO = Converter.convertToListUserDTO(allAdmins);
+
+        return adminsDTO;
+
 
     }
 }
