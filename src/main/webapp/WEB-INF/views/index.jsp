@@ -26,6 +26,7 @@
     </sec:authorize>
 
     <sec:authorize access="isAuthenticated()">
+        <a class="btn btn-primary" href="/user/rental" role="button">Rent a car</a>
         <a class="btn btn-primary" href="/user/edit" role="button">Edit</a>
         <a class="btn btn-primary" href="/logout" role="button">Logout</a>
     </sec:authorize>
