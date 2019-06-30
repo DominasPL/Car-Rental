@@ -1,12 +1,10 @@
 package com.github.DominasPL.CarRental.converters;
 
+import com.github.DominasPL.CarRental.domain.entities.Place;
 import com.github.DominasPL.CarRental.domain.entities.Role;
 import com.github.DominasPL.CarRental.domain.entities.User;
 import com.github.DominasPL.CarRental.domain.entities.UserDetails;
-import com.github.DominasPL.CarRental.dtos.EditDetailsDTO;
-import com.github.DominasPL.CarRental.dtos.RegistrationDTO;
-import com.github.DominasPL.CarRental.dtos.UserDTO;
-import com.github.DominasPL.CarRental.dtos.UserDetailsDTO;
+import com.github.DominasPL.CarRental.dtos.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,4 +87,5 @@ public class Converter {
         return usersDTO;
 
     }
+
 }

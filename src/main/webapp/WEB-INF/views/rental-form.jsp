@@ -19,16 +19,18 @@
         <form:errors path="*"/> <br>
 
         Hire place
-        <form:input path="hirePlace"/> <br>
+        <form:select itemValue="id" itemLabel="name"
+                     path="hirePlace.id" items="${places}"/> <br>
 
         Return place
-        <form:input path="returnPlace"/> <br>
+        <form:select itemValue="id" itemLabel="name"
+                     path="returnPlace.id" items="${places}"/> <br>
 
-        Hire date
-        <form:input path="hireDate"/> <br>
+        <label for="start">Hire date:</label>
+        <input type="date" id="start" name="date" min="2019-01-01" max="2020-12-31"> <br>
 
-        Return date
-        <form:input path="returnDate"/> <br>
+        <label for="start">Return date:</label>
+        <input type="date" id="start" name="date" min="2019-01-01" max="2020-12-31"> <br>
 
         <input type="submit" value="Submit">
     </form:form>
