@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RentalDTO {
 
+    //TODO validation
     private Place hirePlace;
     private Place returnPlace;
     private String hireDate;

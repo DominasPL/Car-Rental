@@ -27,10 +27,10 @@
                      path="returnPlace.id" items="${places}"/> <br>
 
         <label for="start">Hire date:</label>
-        <input type="date" id="start" name="date" min="2019-01-01" max="2020-12-31"> <br>
+        <input type="date" id="start" name="hire-date" min="2019-01-01" max="2020-12-31"> <br>
 
         <label for="start">Return date:</label>
-        <input type="date" id="start" name="date" min="2019-01-01" max="2020-12-31"> <br>
+        <input type="date" id="start" name="return-date" min="2019-01-01" max="2020-12-31"> <br>
 
         <input type="submit" value="Submit">
     </form:form>
