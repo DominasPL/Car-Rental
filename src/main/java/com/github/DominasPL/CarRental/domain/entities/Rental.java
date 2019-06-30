@@ -26,4 +26,9 @@ public class Rental {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "place_id")
+    private Place place;
+
+
 }
