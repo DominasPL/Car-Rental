@@ -35,4 +35,8 @@ public class Rental {
     @JoinColumn(name = "returnPlace_id")
     private Place returnPlace;
 
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
+
 }
