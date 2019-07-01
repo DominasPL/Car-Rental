@@ -1,9 +1,6 @@
 package com.github.DominasPL.CarRental.converters;
 
-import com.github.DominasPL.CarRental.domain.entities.Place;
-import com.github.DominasPL.CarRental.domain.entities.Role;
-import com.github.DominasPL.CarRental.domain.entities.User;
-import com.github.DominasPL.CarRental.domain.entities.UserDetails;
+import com.github.DominasPL.CarRental.domain.entities.*;
 import com.github.DominasPL.CarRental.dtos.*;
 
 import java.util.ArrayList;
@@ -88,4 +85,21 @@ public class Converter {
 
     }
 
+    public static List<RentalDTO> convertToRentalsDTO(List<Rental> allRentals) {
+
+        List<RentalDTO> rentalsDTO = new ArrayList<>();
+
+        for (Rental rental : allRentals) {
+            RentalDTO rentalDTO = new RentalDTO();
+            rentalDTO.setHireDate(rental.getHireDate());
+            rentalDTO.setReturnDate(rental.getReturnDate());
+            rentalDTO.setHirePlace(rental.getHirePlace());
+            rentalDTO.setReturnPlace(rental.getReturnPlace());
+
+            rentalsDTO.add(rentalDTO);
+        }
+
+        return rentalsDTO;
+
+    }
 }

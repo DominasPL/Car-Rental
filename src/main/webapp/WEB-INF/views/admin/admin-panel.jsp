@@ -18,6 +18,7 @@
     <h1>This is an admin panel!</h1>
     <a class="btn btn-primary" href="/admin/users" role="button">Users</a>
     <a class="btn btn-primary" href="/admin/admins" role="button">Admins</a>
+    <a class="btn btn-primary" href="/admin/rentals" role="button">Rentals</a>
     <a class="btn btn-primary" href="/logout" role="button">Logout</a>
 
 </body>

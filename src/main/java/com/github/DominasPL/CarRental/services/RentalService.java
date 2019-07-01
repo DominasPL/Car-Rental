@@ -1,5 +1,6 @@
 package com.github.DominasPL.CarRental.services;
 
+import com.github.DominasPL.CarRental.converters.Converter;
 import com.github.DominasPL.CarRental.domain.entities.Rental;
 import com.github.DominasPL.CarRental.domain.entities.User;
 import com.github.DominasPL.CarRental.domain.repositories.RentalRepository;
@@ -9,7 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sun.plugin2.message.Conversation;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,6 +47,22 @@ public class RentalService {
             rental.setUser(user);
             rentalRepository.save(rental);
         }
+
+    }
+
+
+    public List<RentalDTO> findAllRentals() {
+
+        List<Rental> allRentals = rentalRepository.findAll();
+
+        if (allRentals == null) {
+            logger.info("Rentals not found!");
+            return null;
+        }
+
+        List<RentalDTO> rentalsDTO = Converter.convertToRentalsDTO(allRentals);
+
+        return rentalsDTO;
 
     }
 }
