@@ -32,7 +32,13 @@
         <label for="start">Return date:</label>
         <input type="date" id="start" name="return-date" min="2019-01-01" max="2020-12-31"> <br>
 
+        Brand
+        <form:select itemValue="id" itemLabel="brand"
+                     path="car.id" items="${cars}"/> <br>
+
+
         <input type="submit" value="Submit">
+
     </form:form>
 
 

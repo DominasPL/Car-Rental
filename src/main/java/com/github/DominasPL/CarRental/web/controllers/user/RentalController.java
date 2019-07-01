@@ -1,7 +1,9 @@
 package com.github.DominasPL.CarRental.web.controllers.user;
 
+import com.github.DominasPL.CarRental.domain.entities.Car;
 import com.github.DominasPL.CarRental.domain.entities.Place;
 import com.github.DominasPL.CarRental.dtos.RentalDTO;
+import com.github.DominasPL.CarRental.services.CarService;
 import com.github.DominasPL.CarRental.services.PlaceService;
 import com.github.DominasPL.CarRental.services.RentalService;
 import org.springframework.stereotype.Controller;
@@ -20,10 +22,12 @@ public class RentalController {
 
     private PlaceService placeService;
     private RentalService rentalService;
+    private CarService carService;
 
-    public RentalController(PlaceService placeService, RentalService rentalService) {
+    public RentalController(PlaceService placeService, RentalService rentalService, CarService carService) {
         this.placeService = placeService;
         this.rentalService = rentalService;
+        this.carService = carService;
     }
 
     @GetMapping
@@ -55,6 +59,13 @@ public class RentalController {
 
        return placeService.getAllPlaces();
     }
+
+    @ModelAttribute("cars")
+    public List<Car> getCars() {
+
+        return carService.getAllCars();
+    }
+
 
 
 }

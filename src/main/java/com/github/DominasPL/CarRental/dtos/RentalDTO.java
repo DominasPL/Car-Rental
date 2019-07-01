@@ -1,5 +1,6 @@
 package com.github.DominasPL.CarRental.dtos;
 
+import com.github.DominasPL.CarRental.domain.entities.Car;
 import com.github.DominasPL.CarRental.domain.entities.Place;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +16,7 @@ public class RentalDTO {
     private Place returnPlace;
     private String hireDate;
     private String returnDate;
+    private Car car;
     private String username;
 
 }
