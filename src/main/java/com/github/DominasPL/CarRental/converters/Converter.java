@@ -95,6 +95,7 @@ public class Converter {
             rentalDTO.setReturnDate(rental.getReturnDate());
             rentalDTO.setHirePlace(rental.getHirePlace());
             rentalDTO.setReturnPlace(rental.getReturnPlace());
+            rentalDTO.setUsername(rental.getUser().getUsername());
 
             rentalsDTO.add(rentalDTO);
         }

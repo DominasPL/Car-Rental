@@ -15,5 +15,6 @@ public class RentalDTO {
     private Place returnPlace;
     private String hireDate;
     private String returnDate;
+    private String username;
 
 }

@@ -18,6 +18,7 @@
     <c:forEach items="${rentals}" var="rental" varStatus="rentalStatus">
         <tr>
             <td>${rentalStatus.count}</td>
+            <td>${rental.username}</td>
             <td>${rental.hirePlace.name}</td>
             <td>${rental.hireDate}</td>
             <td>${rental.returnPlace.name}</td>
